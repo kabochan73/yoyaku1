@@ -1,0 +1,12 @@
+[build]
+builder = "DOCKERFILE"
+
+[[services]]
+name = "backend"
+source = "backend"
+dockerfilePath = "backend/Dockerfile"
+
+[[services]]
+name = "frontend"
+source = "frontend"
+dockerfilePath = "frontend/Dockerfile"

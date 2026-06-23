@@ -1,0 +1,48 @@
+# ==========================================
+# Laravel (backend)
+# ==========================================
+backend/.composer/
+backend/.env
+backend/.env.*
+!backend/.env.example
+backend/vendor/
+backend/node_modules/
+backend/storage/logs/*
+backend/storage/framework/cache/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+backend/bootstrap/cache/*
+!backend/storage/logs/.gitkeep
+!backend/storage/framework/cache/.gitkeep
+!backend/storage/framework/sessions/.gitkeep
+!backend/storage/framework/views/.gitkeep
+!backend/bootstrap/cache/.gitkeep
+
+# ==========================================
+# Next.js (frontend)
+# ==========================================
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# ==========================================
+# Docker
+# ==========================================
+docker/volumes/
+
+# ==========================================
+# OS
+# ==========================================
+.DS_Store
+Thumbs.db
+
+# ==========================================
+# IDE
+# ==========================================
+.idea/
+.vscode/
+*.swp
+*.swo
