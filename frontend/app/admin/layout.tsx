@@ -5,16 +5,17 @@ import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const { user, isInitialized } = useAuthStore()
+  const { user, token, isInitialized } = useAuthStore()
   const router = useRouter()
 
   useEffect(() => {
     if (!isInitialized) return
-    if (!user) { router.push('/auth/login'); return }
-    if (!user.is_admin) router.push('/')
-  }, [isInitialized, user, router])
+    if (!token) { router.push('/auth/login'); return }   // トークンなし → 未ログイン
+    if (user && !user.is_admin) router.push('/')          // ログイン済みだが管理者でない
+  }, [isInitialized, token, user, router])
 
-  if (!isInitialized || !user?.is_admin) return null
+  // token はあるが /auth/me 完了前（user がまだ null）は何も表示しない
+  if (!isInitialized || !token || !user?.is_admin) return null
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">

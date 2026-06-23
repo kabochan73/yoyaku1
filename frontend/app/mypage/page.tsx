@@ -35,13 +35,14 @@ function formatRange(start: string, end: string) {
 }
 
 export default function MyPage() {
-  const { user, isInitialized } = useAuthStore()
+  const { user, token, isInitialized } = useAuthStore()
   const router = useRouter()
   const queryClient = useQueryClient()
 
   useEffect(() => {
-    if (isInitialized && !user) router.push('/auth/login')
-  }, [isInitialized, user, router])
+    if (!isInitialized) return
+    if (!token) router.push('/auth/login')
+  }, [isInitialized, token, router])
 
   const { data: reservations = [], isLoading } = useQuery<Reservation[]>({
     queryKey: ['my-reservations'],
@@ -54,7 +55,7 @@ export default function MyPage() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['my-reservations'] }),
   })
 
-  if (!isInitialized || !user) return null
+  if (!isInitialized || !token || !user) return null
 
   const now = new Date()
   const upcoming = reservations.filter(
