@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ReservationConfirmed;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ReservationController extends Controller
 {
@@ -57,6 +59,8 @@ class ReservationController extends Controller
             'total_price'    => 0, // 料金計算は後で実装
             'status'         => 'confirmed',
         ]);
+
+        Mail::to($request->user()->email)->send(new ReservationConfirmed($reservation));
 
         return response()->json($reservation, 201);
     }
