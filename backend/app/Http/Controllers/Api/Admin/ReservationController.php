@@ -64,7 +64,7 @@ class ReservationController extends Controller
             'customer_name'  => ['nullable', 'string', 'max:255'],
             'customer_phone' => ['nullable', 'string', 'max:20'],
             'notes'          => ['nullable', 'string'],
-            'status'         => ['nullable', 'in:pending,confirmed,cancelled'],
+            'status'         => ['nullable', 'in:confirmed,cancelled'],
         ]);
 
         $conflict = Reservation::where('id', '!=', $reservation->id)

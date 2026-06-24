@@ -13,7 +13,7 @@ export type Reservation = {
   user_id: number | null
   start_datetime: string
   end_datetime: string
-  status: 'pending' | 'confirmed' | 'cancelled'
+  status: 'confirmed' | 'cancelled'
   total_price: number
   customer_name: string | null
   customer_phone: string | null

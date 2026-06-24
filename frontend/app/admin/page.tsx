@@ -10,13 +10,11 @@ import NewReservationModal from '@/components/admin/NewReservationModal'
 const WEEKDAYS = ['日', '月', '火', '水', '木', '金', '土']
 
 const STATUS_LABEL: Record<Reservation['status'], string> = {
-  pending:   '予約中',
   confirmed: '予約確定',
   cancelled: 'キャンセル済',
 }
 
 const STATUS_COLOR: Record<Reservation['status'], string> = {
-  pending:   'text-yellow-600',
   confirmed: 'text-green-600',
   cancelled: 'text-gray-400',
 }
